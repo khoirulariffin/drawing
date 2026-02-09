@@ -56,7 +56,7 @@ onUnmounted(() => {
         </h3>
         <button
           @click="handleClose"
-          @touchstart.prevent="handleClose"
+          @touchend.prevent="handleClose"
           class="apple-button w-10 h-10 rounded-full bg-white/10 text-white backdrop-blur-md hover:bg-white/20 transition-colors pointer-events-auto"
         >
           <svg
@@ -124,7 +124,7 @@ onUnmounted(() => {
           <!-- Shutter Button -->
           <button
             @click="handleCapture"
-            @touchstart.prevent="handleCapture"
+            @touchend.prevent="handleCapture"
             :disabled="!isActive"
             class="apple-button w-16 h-16 rounded-full bg-white shadow-xl hover:scale-95 active:scale-90 transition-all disabled:opacity-20 disabled:scale-100 mx-8"
             title="Capture Image"
@@ -136,7 +136,7 @@ onUnmounted(() => {
         <!-- Switch Camera Button -->
         <button
           @click="handleSwitchCamera"
-          @touchstart.prevent="handleSwitchCamera"
+          @touchend.prevent="handleSwitchCamera"
           :disabled="!isActive"
           class="absolute right-8 apple-button w-10 h-10 rounded-full bg-white/10 text-white backdrop-blur-md hover:bg-white/20 transition-colors pointer-events-auto"
           title="Switch Camera"
