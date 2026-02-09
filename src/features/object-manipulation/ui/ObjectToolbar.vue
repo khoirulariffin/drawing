@@ -77,7 +77,10 @@ const opacityPercent = computed(() => Math.round(props.opacity * 100))
     </div>
 
     <!-- Normal Object Toolbar -->
-    <div v-else class="flex items-center gap-1 p-1.5 apple-glass rounded-full shadow-2xl min-w-fit">
+    <div
+      v-else
+      class="flex items-center gap-1 p-1.5 apple-glass rounded-full shadow-2xl min-w-fit max-w-[90vw] overflow-x-auto scrollbar-hide"
+    >
       <!-- Common Actions Area -->
       <div class="flex items-center gap-0.5 bg-(--bg-app)/30 p-0.5 rounded-full">
         <!-- Crop (image only) -->
@@ -234,6 +237,28 @@ const opacityPercent = computed(() => Math.round(props.opacity * 100))
 
         <div class="w-px h-6 bg-(--border-color) mx-1" />
 
+        <!-- button export object -->
+        <button
+          @click="emit('exportObject')"
+          class="apple-button w-9 h-9 rounded-full text-(--text-primary) hover:bg-(--bg-app)"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7,10 12,15 17,10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+        </button>
+
         <button
           @click="emit('delete')"
           class="apple-button w-9 h-9 rounded-full text-(--danger-color) hover:bg-(--danger-color)/10"
@@ -280,5 +305,14 @@ const opacityPercent = computed(() => Math.round(props.opacity * 100))
 
 .ease-out-expo {
   animation: in-expo 0.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 </style>
