@@ -79,7 +79,7 @@ const opacityPercent = computed(() => Math.round(props.opacity * 100))
     <!-- Normal Object Toolbar -->
     <div
       v-else
-      class="flex items-center gap-1 p-1.5 apple-glass rounded-full shadow-2xl min-w-fit max-w-[90vw] overflow-x-auto scrollbar-hide"
+      class="flex items-center gap-1 p-1.5 apple-glass rounded-full shadow-2xl w-80 md:w-fit overflow-x-auto scrollbar-hide"
     >
       <!-- Common Actions Area -->
       <div class="flex items-center gap-0.5 bg-(--bg-app)/30 p-0.5 rounded-full">
