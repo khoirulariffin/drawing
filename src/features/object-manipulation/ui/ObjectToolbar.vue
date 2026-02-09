@@ -43,7 +43,7 @@ const opacityPercent = computed(() => Math.round(props.opacity * 100))
     <!-- Crop Mode Toolbar -->
     <div
       v-if="isCropping"
-      class="flex items-center gap-2 px-3 py-2 bg-[var(--accent-color)] rounded-[1.5rem] shadow-2xl border border-white/20"
+      class="flex items-center gap-2 px-3 py-2 bg-(--accent-color) rounded-3xl shadow-2xl border border-white/20"
     >
       <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
         <svg
@@ -64,7 +64,7 @@ const opacityPercent = computed(() => Math.round(props.opacity * 100))
       <span class="text-xs font-bold text-white px-1">Crop Image</span>
       <button
         @click="emit('applyCrop')"
-        class="apple-button px-4 h-8 rounded-full bg-white text-[var(--accent-color)] text-xs font-bold hover:bg-neutral-100 transition-colors shadow-sm"
+        class="apple-button px-4 h-8 rounded-full bg-white text-(--accent-color) text-xs font-bold hover:bg-neutral-100 transition-colors shadow-sm"
       >
         Done
       </button>
@@ -79,13 +79,13 @@ const opacityPercent = computed(() => Math.round(props.opacity * 100))
     <!-- Normal Object Toolbar -->
     <div v-else class="flex items-center gap-1 p-1.5 apple-glass rounded-full shadow-2xl min-w-fit">
       <!-- Common Actions Area -->
-      <div class="flex items-center gap-0.5 bg-[var(--bg-app)]/30 p-0.5 rounded-full">
+      <div class="flex items-center gap-0.5 bg-(--bg-app)/30 p-0.5 rounded-full">
         <!-- Crop (image only) -->
         <button
           v-if="isImage"
           @click="emit('crop')"
           title="Crop"
-          class="apple-button w-9 h-9 rounded-full text-[var(--text-primary)] hover:bg-[var(--bg-app)] transition-colors"
+          class="apple-button w-9 h-9 rounded-full text-(--text-primary) hover:bg-(--bg-app) transition-colors"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +106,7 @@ const opacityPercent = computed(() => Math.round(props.opacity * 100))
         <!-- Flip Controls -->
         <button
           @click="emit('flipHorizontal')"
-          class="apple-button w-9 h-9 rounded-full text-[var(--text-primary)] hover:bg-[var(--bg-app)]"
+          class="apple-button w-9 h-9 rounded-full text-(--text-primary) hover:bg-(--bg-app)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +128,7 @@ const opacityPercent = computed(() => Math.round(props.opacity * 100))
         <!-- Rotation -->
         <button
           @click="emit('rotateCw')"
-          class="apple-button w-9 h-9 rounded-full text-[var(--text-primary)] hover:bg-[var(--bg-app)]"
+          class="apple-button w-9 h-9 rounded-full text-(--text-primary) hover:bg-(--bg-app)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -147,12 +147,12 @@ const opacityPercent = computed(() => Math.round(props.opacity * 100))
         </button>
       </div>
 
-      <div class="w-px h-6 bg-[var(--border-color)] mx-1" />
+      <div class="w-px h-6 bg-(--border-color) mx-1" />
 
       <!-- Opacity Slider Group -->
-      <div class="flex items-center gap-2 px-3 py-1 bg-[var(--bg-app)]/30 rounded-full">
+      <div class="flex items-center gap-2 px-3 py-1 bg-(--bg-app)/30 rounded-full">
         <div
-          class="w-1.5 h-1.5 rounded-full bg-[var(--text-secondary)]"
+          class="w-1.5 h-1.5 rounded-full bg-(--text-secondary)"
           :style="{ opacity: props.opacity }"
         ></div>
         <input
@@ -161,20 +161,20 @@ const opacityPercent = computed(() => Math.round(props.opacity * 100))
           max="100"
           :value="opacityPercent"
           @input="emit('update:opacity', Number(($event.target as HTMLInputElement).value) / 100)"
-          class="w-16 h-1 accent-[var(--text-primary)] cursor-pointer"
+          class="w-16 h-1 accent-(--text-primary) cursor-pointer"
         />
-        <span class="text-[9px] font-bold text-[var(--text-secondary)] w-6 tabular-nums"
+        <span class="text-[9px] font-bold text-(--text-secondary) w-6 tabular-nums"
           >{{ opacityPercent }}%</span
         >
       </div>
 
-      <div class="w-px h-6 bg-[var(--border-color)] mx-1" />
+      <div class="w-px h-6 bg-(--border-color) mx-1" />
 
       <!-- Layer & Clone Group -->
       <div class="flex items-center gap-0.5">
         <button
           @click="emit('bringForward')"
-          class="apple-button w-9 h-9 rounded-full text-[var(--text-primary)] hover:bg-[var(--bg-app)]"
+          class="apple-button w-9 h-9 rounded-full text-(--text-primary) hover:bg-(--bg-app)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -193,8 +193,8 @@ const opacityPercent = computed(() => Math.round(props.opacity * 100))
         </button>
 
         <button
-          @click="emit('duplicate')"
-          class="apple-button w-9 h-9 rounded-full text-[var(--text-primary)] hover:bg-[var(--bg-app)]"
+          @click="emit('sendBackward')"
+          class="apple-button w-9 h-9 rounded-full text-(--text-primary) hover:bg-(--bg-app)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -213,8 +213,30 @@ const opacityPercent = computed(() => Math.round(props.opacity * 100))
         </button>
 
         <button
+          @click="emit('duplicate')"
+          class="apple-button w-9 h-9 rounded-full text-(--text-primary) hover:bg-(--bg-app)"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+            <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+          </svg>
+        </button>
+
+        <div class="w-px h-6 bg-(--border-color) mx-1" />
+
+        <button
           @click="emit('delete')"
-          class="apple-button w-9 h-9 rounded-full text-[var(--danger-color)] hover:bg-[var(--danger-color)]/10"
+          class="apple-button w-9 h-9 rounded-full text-(--danger-color) hover:bg-(--danger-color)/10"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -237,7 +259,7 @@ const opacityPercent = computed(() => Math.round(props.opacity * 100))
       <!-- Arrow Indicator for Floating Panel -->
       <div class="absolute top-full left-1/2 -translate-x-1/2 -mt-1">
         <div
-          class="w-2.5 h-2.5 bg-[var(--bg-panel)] rotate-45 border-r border-b border-[var(--border-color)]"
+          class="w-2.5 h-2.5 bg-(--bg-panel) rotate-45 border-r border-b border-(--border-color)"
         ></div>
       </div>
     </div>
