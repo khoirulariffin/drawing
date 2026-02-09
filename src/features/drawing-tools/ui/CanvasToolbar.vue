@@ -87,16 +87,16 @@ const currentToolLabel = computed(() => tools.find((t) => t.id === props.activeT
     >
       <div
         v-if="showBrushPanel"
-        class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 p-5 apple-glass rounded-[2rem] z-50 min-w-[260px] shadow-2xl"
+        class="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 p-5 apple-glass rounded-4xl z-50 min-w-[260px] shadow-2xl"
       >
         <!-- Color Palettes -->
         <div class="mb-5">
           <div class="flex items-center justify-between mb-3 px-1">
-            <label class="text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider"
+            <label class="text-xs font-bold text-(--text-secondary) uppercase tracking-wider"
               >Color</label
             >
             <div class="flex items-center gap-2">
-              <div class="text-[10px] font-mono text-[var(--text-secondary)]">
+              <div class="text-[10px] font-mono text-(--text-secondary)">
                 {{ brushColor.toUpperCase() }}
               </div>
               <input
@@ -128,7 +128,7 @@ const currentToolLabel = computed(() => tools.find((t) => t.id === props.activeT
               class="apple-button w-8 h-8 rounded-full border-2 transition-all hover:scale-125 active:scale-90 shadow-sm"
               :class="
                 brushColor === color
-                  ? 'border-[var(--text-primary)] scale-110 shadow-md'
+                  ? 'border-(--text-primary) scale-110 shadow-md'
                   : 'border-transparent'
               "
               :style="{ backgroundColor: color }"
@@ -139,21 +139,21 @@ const currentToolLabel = computed(() => tools.find((t) => t.id === props.activeT
         <!-- Brush Size Picker -->
         <div>
           <label
-            class="block text-xs font-bold text-[var(--text-secondary)] uppercase tracking-wider mb-3 px-1"
+            class="block text-xs font-bold text-(--text-secondary) uppercase tracking-wider mb-3 px-1"
             >Size</label
           >
           <div
-            class="flex items-center gap-1.5 bg-[var(--bg-app)]/50 p-1.5 rounded-full overflow-x-auto no-scrollbar"
+            class="flex items-center gap-1.5 bg-(--bg-app)/50 p-1.5 rounded-full overflow-x-auto no-scrollbar"
           >
             <button
               v-for="w in brushWidths"
               :key="w"
               @click="emit('update:brushWidth', w)"
-              class="apple-button flex-shrink-0 w-8 h-8 rounded-full transition-all"
+              class="apple-button shrink-0 w-8 h-8 rounded-full transition-all"
               :class="
                 brushWidth === w
-                  ? 'bg-[var(--bg-item-active)] text-[var(--text-active)] shadow-md'
-                  : 'text-[var(--text-secondary)] hover:bg-[var(--bg-app)]'
+                  ? 'bg-(--bg-item-active) text-(--text-active) shadow-md'
+                  : 'text-(--text-secondary) hover:bg-(--bg-app)'
               "
             >
               <div
@@ -161,7 +161,7 @@ const currentToolLabel = computed(() => tools.find((t) => t.id === props.activeT
                 :style="{
                   width: `${Math.max(4, w * 1.2)}px`,
                   height: `${Math.max(4, w * 1.2)}px`,
-                  backgroundColor: brushWidth === w ? 'var(--text-active)' : 'currentColor',
+                  backgroundColor: brushWidth === w ? '(--text-active)' : 'currentColor',
                 }"
               />
             </button>
@@ -172,10 +172,10 @@ const currentToolLabel = computed(() => tools.find((t) => t.id === props.activeT
 
     <!-- Main Toolbar Container -->
     <div
-      class="apple-glass rounded-[2rem] p-1.5 flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar"
+      class="apple-glass rounded-4xl p-1.5 flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar"
     >
       <!-- Primary Drawing Tools Group -->
-      <div class="flex items-center gap-1 bg-[var(--bg-app)]/50 rounded-[1.75rem] p-1">
+      <div class="flex items-center gap-1 bg-(--bg-app)/50 rounded-[1.75rem] p-1">
         <button
           v-for="tool in tools"
           :key="tool.id"
@@ -184,8 +184,8 @@ const currentToolLabel = computed(() => tools.find((t) => t.id === props.activeT
           class="apple-button w-10 h-10 sm:w-11 sm:h-11 rounded-full transition-all"
           :class="
             isActive(tool.id)
-              ? 'bg-[var(--bg-item-active)] text-[var(--text-active)] shadow-lg scale-105'
-              : 'text-[var(--text-secondary)] hover:bg-[var(--bg-app)] hover:text-[var(--text-primary)]'
+              ? 'bg-(--bg-item-active) text-(--text-active) shadow-lg scale-105'
+              : 'text-(--text-secondary) hover:bg-(--bg-app) hover:text-(--text-primary)'
           "
         >
           <svg
@@ -204,17 +204,17 @@ const currentToolLabel = computed(() => tools.find((t) => t.id === props.activeT
       </div>
 
       <!-- Vertical Divider -->
-      <div class="w-px h-8 bg-[var(--border-color)] mx-1 hidden sm:block" />
+      <div class="w-px h-8 bg-(--border-color) mx-1 hidden sm:block" />
 
       <!-- Brush & Color Section -->
       <div class="relative flex items-center">
         <button
           @click="showBrushPanel = !showBrushPanel"
-          class="apple-button h-11 px-3 gap-2 rounded-full text-[var(--text-primary)] hover:bg-[var(--bg-app)] transition-colors"
-          :class="{ 'bg-[var(--bg-app)]': showBrushPanel }"
+          class="apple-button h-11 px-3 gap-2 rounded-full text-(--text-primary) hover:bg-(--bg-app) transition-colors"
+          :class="{ 'bg-(--bg-app)': showBrushPanel }"
         >
           <div
-            class="rounded-full shadow-inner border border-[var(--border-color)] transition-transform"
+            class="rounded-full shadow-inner border border-(--border-color) transition-transform"
             :style="{
               width: `${Math.max(12, Math.min(brushWidth * 2, 24))}px`,
               height: `${Math.max(12, Math.min(brushWidth * 2, 24))}px`,
@@ -229,7 +229,7 @@ const currentToolLabel = computed(() => tools.find((t) => t.id === props.activeT
             fill="none"
             stroke="currentColor"
             stroke-width="2.5"
-            class="text-[var(--text-secondary)] transition-transform duration-300"
+            class="text-(--text-secondary) transition-transform duration-300"
             :class="{ 'rotate-180': showBrushPanel }"
           >
             <path d="m6 9 6 6 6-6" />
@@ -242,7 +242,7 @@ const currentToolLabel = computed(() => tools.find((t) => t.id === props.activeT
         <button
           @click="emit('upload')"
           title="Upload"
-          class="apple-button w-10 h-10 rounded-full text-[var(--text-secondary)] hover:bg-[var(--bg-app)] hover:text-[var(--text-primary)]"
+          class="apple-button w-10 h-10 rounded-full text-(--text-secondary) hover:bg-(--bg-app) hover:text-(--text-primary)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -264,7 +264,7 @@ const currentToolLabel = computed(() => tools.find((t) => t.id === props.activeT
         <button
           @click="emit('camera')"
           title="Camera"
-          class="apple-button w-10 h-10 rounded-full text-[var(--text-secondary)] hover:bg-[var(--bg-app)] hover:text-[var(--text-primary)]"
+          class="apple-button w-10 h-10 rounded-full text-(--text-secondary) hover:bg-(--bg-app) hover:text-(--text-primary)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -284,17 +284,13 @@ const currentToolLabel = computed(() => tools.find((t) => t.id === props.activeT
           </svg>
         </button>
 
-        <div class="w-px h-6 bg-[var(--border-color)] mx-1" />
+        <div class="w-px h-6 bg-(--border-color) mx-1" />
 
         <button
           @click="emit('undo')"
           :disabled="!canUndo"
           class="apple-button w-10 h-10 rounded-full transition-opacity disabled:opacity-20"
-          :class="
-            canUndo
-              ? 'text-[var(--text-primary)] hover:bg-[var(--bg-app)]'
-              : 'text-[var(--text-secondary)]'
-          "
+          :class="canUndo ? 'text-(--text-primary) hover:bg-(--bg-app)' : 'text-(--text-secondary)'"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -316,11 +312,7 @@ const currentToolLabel = computed(() => tools.find((t) => t.id === props.activeT
           @click="emit('redo')"
           :disabled="!canRedo"
           class="apple-button w-10 h-10 rounded-full transition-opacity disabled:opacity-20"
-          :class="
-            canRedo
-              ? 'text-[var(--text-primary)] hover:bg-[var(--bg-app)]'
-              : 'text-[var(--text-secondary)]'
-          "
+          :class="canRedo ? 'text-(--text-primary) hover:bg-(--bg-app)' : 'text-(--text-secondary)'"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -338,12 +330,12 @@ const currentToolLabel = computed(() => tools.find((t) => t.id === props.activeT
           </svg>
         </button>
 
-        <div class="w-px h-6 bg-[var(--border-color)] mx-1" />
+        <div class="w-px h-6 bg-(--border-color) mx-1" />
 
         <button
           @click="emit('clear')"
           title="Clear"
-          class="apple-button w-10 h-10 rounded-full text-[var(--danger-color)] hover:bg-[var(--danger-color)]/10"
+          class="apple-button w-10 h-10 rounded-full text-(--danger-color) hover:bg-(--danger-color)/10"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -364,7 +356,7 @@ const currentToolLabel = computed(() => tools.find((t) => t.id === props.activeT
 
         <button
           @click="emit('export')"
-          class="apple-button h-10 px-4 ml-1 rounded-full bg-[var(--accent-color)] text-white font-semibold text-xs shadow-md hover:brightness-110 active:scale-95 transition-all"
+          class="apple-button h-10 px-4 ml-1 rounded-full bg-(--accent-color) text-white font-semibold text-xs shadow-md hover:brightness-110 active:scale-95 transition-all"
         >
           Export
         </button>
@@ -374,10 +366,9 @@ const currentToolLabel = computed(() => tools.find((t) => t.id === props.activeT
     <!-- Active Indicator / Feedback -->
     <div class="flex justify-center">
       <div class="px-4 py-1.5 apple-glass rounded-full">
-        <span
-          class="text-[10px] font-bold text-[var(--text-secondary)] uppercase tracking-[0.2em]"
-          >{{ currentToolLabel }}</span
-        >
+        <span class="text-[10px] font-bold text-(--text-secondary) uppercase tracking-[0.2em]">{{
+          currentToolLabel
+        }}</span>
       </div>
     </div>
   </div>
