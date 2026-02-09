@@ -227,14 +227,14 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col h-screen bg-[var(--bg-app)] overflow-hidden select-none touch-none">
+  <div class="flex flex-col h-screen bg-(--bg-app) overflow-hidden select-none touch-none">
     <!-- Top Header -->
     <header
       class="flex items-center justify-between px-6 md:px-12 py-6 md:py-12 absolute top-0 left-0 right-0 z-50 pointer-events-none"
     >
       <div class="flex items-center gap-2 pointer-events-auto">
         <div
-          class="w-8 h-8 rounded-lg bg-[var(--accent-color)] flex items-center justify-center text-white"
+          class="w-8 h-8 rounded-lg bg-(--accent-color) flex items-center justify-center text-white"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -253,7 +253,7 @@ onUnmounted(() => {
             <path d="m8.5 8.5 1 1" />
           </svg>
         </div>
-        <h1 class="text-sm font-bold tracking-tight text-[var(--text-primary)]">DrawingBoard</h1>
+        <h1 class="text-sm font-bold tracking-tight text-(--text-primary)">DrawingBoard</h1>
       </div>
 
       <div class="flex items-center gap-3 pointer-events-auto">
@@ -264,7 +264,7 @@ onUnmounted(() => {
     <!-- Canvas Area -->
     <div
       ref="canvasWrapper"
-      class="flex-1 relative m-0 sm:m-4 sm:rounded-[2.5rem] overflow-hidden bg-[var(--bg-canvas)] shadow-2xl border border-[var(--border-color)] transition-all duration-500 ease-in-out z-0"
+      class="flex-1 relative m-0 sm:m-4 sm:rounded-[2.5rem] overflow-hidden bg-(--bg-canvas) shadow-2xl border border-(--border-color) transition-all duration-500 ease-in-out z-0"
     >
       <canvas ref="canvasEl" />
 
@@ -299,7 +299,7 @@ onUnmounted(() => {
         />
       </Transition>
       <!-- Floating Bottom Toolbar -->
-      <div class="absolute bottom-8 left-0 right-0 z-40 px-4 pointer-events-none">
+      <div class="absolute bottom-12 md:bottom-8 left-0 right-0 z-40 px-4 pointer-events-none">
         <div class="pointer-events-auto flex justify-center">
           <CanvasToolbar
             :active-tool="activeTool"
