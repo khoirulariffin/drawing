@@ -227,7 +227,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col h-screen bg-(--bg-app) overflow-hidden select-none touch-none">
+  <div class="flex flex-col h-dvh bg-(--bg-app) overflow-hidden select-none touch-none">
     <!-- Top Header -->
     <header
       class="flex items-center justify-between px-6 md:px-12 py-6 md:py-12 absolute top-0 left-0 right-0 z-50 pointer-events-none"
