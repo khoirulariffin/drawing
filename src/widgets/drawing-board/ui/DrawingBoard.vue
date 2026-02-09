@@ -299,7 +299,7 @@ onUnmounted(() => {
         />
       </Transition>
       <!-- Floating Bottom Toolbar -->
-      <div class="absolute bottom-40 md:bottom-8 left-0 right-0 z-40 px-4 pointer-events-none">
+      <div class="absolute bottom-28 md:bottom-8 left-0 right-0 z-40 px-4 pointer-events-none">
         <div class="pointer-events-auto flex justify-center">
           <CanvasToolbar
             :active-tool="activeTool"

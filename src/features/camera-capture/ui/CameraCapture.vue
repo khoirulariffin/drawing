@@ -119,7 +119,9 @@ onUnmounted(() => {
       >
         <div class="relative flex items-center justify-center">
           <!-- Shutter Outer Ring -->
-          <div class="absolute w-20 h-20 rounded-full border-2 border-white/30"></div>
+          <div
+            class="absolute w-20 h-20 rounded-full border-2 border-white/30 pointer-events-none"
+          ></div>
 
           <!-- Shutter Button -->
           <button
@@ -129,7 +131,7 @@ onUnmounted(() => {
             class="apple-button w-16 h-16 rounded-full bg-white shadow-xl hover:scale-95 active:scale-90 transition-all disabled:opacity-20 disabled:scale-100 mx-8"
             title="Capture Image"
           >
-            <div class="w-14 h-14 rounded-full border border-black/5"></div>
+            <div class="w-14 h-14 rounded-full border border-black/5 pointer-events-none"></div>
           </button>
         </div>
 
